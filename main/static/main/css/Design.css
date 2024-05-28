@@ -1,0 +1,143 @@
+.sidenav {
+    height: 100%; 
+    width: 200px; 
+    position: fixed; 
+    z-index: 1; 
+    top: 0; 
+    left: 0;
+    background-color: #48644B; 
+    overflow-x: hidden; 
+    padding-top: 20px;
+    color: rgb(255 255 255)
+} /*поле сбоку*/
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #818181;
+    display: block;
+} /*текст*/
+
+.sidenav a:hover {
+    color: #f1f1f1;
+} /*подсветка*/
+
+.Zag1 {
+   margin: 10px;
+  display: flex;
+  justify-content: space-around;
+  font-size: 30px;
+}
+
+.block2 {
+    text-align: left;
+    height: 100%; 
+    margin-left: 200px;
+    margin-right: 20px;
+
+    
+}
+
+.block2 a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #808080;
+    display: block;
+}
+
+.block2 a:hover {
+    color: #32CD32;
+}
+
+
+.block {
+  
+  margin: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.niz {
+  display: grid;
+  height: 500px;
+}
+.one {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  max-content: 300px;
+  height: 40px;
+  width: 300px;
+}
+
+.inp {
+  padding: 7 px;
+  margin: 10px;
+}
+
+.inp1 {
+  padding: 7 px;
+  margin: 10px;
+  width:400px;
+}
+
+.inp2 {
+  padding: 7 px;
+  margin: 10px;
+  width: 50px;
+}
+
+.mt{
+  display: flex;
+  justify-content: space-around;
+  color: ##d4d4d4;
+  margin-right: 20px;
+}
+
+.Kn2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.kn2{
+  margin-bottom: 20px;
+  flex-direction: row;
+  max-content: 300px;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  font-size: 14px;
+  vertical-align: middle;
+  color: rgb(255 255 255);
+  text-align: center;
+  border-radius: 4px;
+  background-color: #419152;
+  line-height: 22px;
+  height: 40px;
+  width: 110px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  border: none;
+  margin: 0;
+}
+
+.container{
+    display:inline-block;
+    justify-content: space-between;
+}
+
+table {
+    width: 100%;
+    border-spacing: 1px;
+}
+
+td, th {
+    border-color: black;
+    background-color: #f1f1f1;
+    padding: 5xp;
+}

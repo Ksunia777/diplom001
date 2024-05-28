@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Возврат</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/Design3.css' %}">
+</head>
+<body>
+    <div class="Zag1"> <img  src="../img/logo.png"  width="226" height="44"></div>
+    <p><b>Возврат</b></p>
+    <div class="block2">
+         <div class="container1">
+            <div>
+             <p>Заказ</p>
+            
+
+            </div>
+            <div>
+             <p>Причина</p>
+             <input class="inp1" type='text' >
+            </div> 
+            <div>
+             <p>Сумма</p>
+             <input class="inp2" type='number'>
+            </div>  
+            <div>
+             <p>Способ оплаты</p>
+             <p><select name="select" size="3" multiple>
+             <option selected value="s1">Наличные</option>
+             <option value="s2">Перевод</option>
+             <option value="s3">Карта</option>
+             <option value="s4">QR-код</option>
+             </select>
+            </div>  
+         </div>    
+    </div>    

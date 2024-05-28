@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Бариста</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'main/css/design2.css' %}">
+</head>
+<body>
+    <div class="sidenav">
+        <img  src="../img/logo2.png">
+        <a href="#">Бариста</a>
+        <a href="#">Документы</a>
+        <a href="#">Меню</a>
+        <a href="#">Акции</a>
+        <a href="#">Чек-лист</a>
+        <a href="#">Инвентаризация</a>
+        <div class="niz">
+            <a href="#">Настройки</a>
+            <a href="#">Выйти</a> 
+        </div>
+    </div>
+    <div class="block2">
+     <div class="Zag1">
+         <p><b>Данные бариста</b></p>
+     </div>
+     <div>
+        <div class="container1">
+          <div>
+             <input class="inp" type='text' placeholder="имя"  name='first_name'>
+             <input class="inp" type='text' placeholder="фамилия"  name='last_name'>
+          </div>
+          <div>
+             <input class="inp" type='text' placeholder="login"  name='first_name'>
+             <input class="inp" type='text' placeholder="e-mail"  name='last_name'>
+          </div>
+          <div>
+             <input class="inp" type="password" placeholder="password"> 
+             <input class="inp"type="password" placeholder="password"> 
+          </div>
+          <div>
+             <input class="inp" type='text' placeholder="id"  name='id'>
+          </div>
+        </div>
+        <div>
+          <input type="button" class="kn2" value="Сохранить">
+        </div> 
+     </div>
+     <div class="Zag2">
+         <p><b>Разрешить доступ</b></p>
+         <p><input type="checkbox" name="a" value="Инвентаризация">Инвентаризация</p>
+         <p><input type="checkbox" name="a" value="Корзина и чек">Корзина и чек</p>
+         <p><input type="checkbox" name="a" value="Оформление возврата">Оформление возврата</p>
+         <p><input type="checkbox" name="a" value="Оформление доп.скидки">Оформление доп.скидки</p>
+     </div>
+     <div>
+         <input type="button" class="kn2" value="Сохранить">
+     </div> 
+     <div class="Zag2">
+         <p><b>Список Бариста</b></p>
+         <table>
+             <tr>
+              <th>№</th>
+              <th>Имя</th>
+              <th>Фамилия</th>
+              <th>ID</th>
+              <th>Почта</th>
+              <th>Редактирование</th>
+              <th>Блокировка</th>
+              <th>Удалить</th>
+            </tr>
+             <tr>
+              <td>№</td>
+              <td>Имя</td>
+              <td>Фамилия</td>
+              <td>ID</td>
+              <td>Почта</td>
+              <td><a href="#">Редактировать</a></td>
+              <td><a href="#">Блокировать</a></td>
+              <td><a href="#">Удалить</a></td>
+            </tr>
+         </table>
+     </div>
+    </div>
+</body>
+</html>

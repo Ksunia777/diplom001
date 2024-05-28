@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Меню</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/design2.css' %}">
+</head>
+<body>
+    <div class="sidenav">
+        <img  src="../img/logo2.png">
+        <a href="#">Бариста</a>
+        <a href="#">Документы</a>
+        <a href="#">Меню</a>
+        <a href="#">Акции</a>
+        <a href="#">Чек-лист</a>
+        <a href="#">Инвентаризация</a>
+        <div class="niz">
+            <a href="#">Настройки</a>
+            <a href="#">Выйти</a> 
+        </div>
+    </div>
+    </div>
+    <div class="block2">
+     <div class="Zag1">
+         <p><b>Меню</b></p>
+     </div>
+     <div class="Zag2">
+         <p><b>Список напитков</b></p>
+         <table>
+             <tr>
+              <th>№</th>
+              <th>Название</th>
+              <th>Состав</th>
+              <th>Категория</th>
+              <th>Цена</th>
+              <th>Редактирование</th>
+              <th>Блокировка</th>
+              <th>Удалить</th>
+            </tr>
+             <tr>
+              <td>№</td>
+              <td>Название</td>
+              <td>Состав</td>
+              <td>Категория</td>
+              <td>Цена</td>
+              <td><a href="#">Редактировать</a></td>
+              <td><a href="#">Блокировать</a></td>
+              <td><a href="#">Удалить</a></td>
+            </tr>
+         </table>
+         <div>
+             <input type="button" class="kn2" value="Сохранить">
+         </div>
+         
+         <div class="Zag2">
+         <p><b>Список десертов</b></p>
+         <table>
+             <tr>
+              <th>№</th>
+              <th>Название</th>
+              <th>Состав</th>
+              <th>Цена</th>
+              <th>Редактирование</th>
+              <th>Блокировка</th>
+              <th>Удалить</th>
+            </tr>
+             <tr>
+              <td>№</td>
+              <td>Название</td>
+              <td>Состав</td>
+              <td>Цена</td>
+              <td><a href="#">Редактировать</a></td>
+              <td><a href="#">Блокировать</a></td>
+              <td><a href="#">Удалить</a></td>
+         </table>
+         <div>
+             <input type="button" class="kn2" value="Сохранить">
+         </div>
+         </div>
+             <a href="#">Добавить список</a>
+         </div>
+     </div>
+    </div>
+</body>
+</html>
