@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from main.models import Menu
+
+# import models.menu
+
 
 def index(request) :
     return  HttpResponse("<h4>help</h4>")
@@ -14,7 +18,17 @@ def set(request):
     return render(request, 'Settings.html')
 
 def menu(request):
-    return render(request, 'Menu.html')
+
+    drinks = Menu.objects.all()
+
+    context = {"drinks_list": drinks
+        #        [
+        # {"name":context2[0].position_name, "description": "some desc1", "cost":123.00},
+        # {"name":"name2", "description": "some desc2", "cost":23.00},
+        # {}
+        # ]
+        }
+    return render(request, 'Menu.html', context)
 
 def barista(request):
     return render(request, 'Barista.html')
