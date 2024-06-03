@@ -42,3 +42,13 @@ class Additives(models.Model):
     class Meta:
         managed = False
         db_table = 'additives'
+
+class Stock(models.Model):
+    idstock = models.AutoField(primary_key=True)
+    stockc_name = models.CharField(max_length=100)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    description = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'stock'

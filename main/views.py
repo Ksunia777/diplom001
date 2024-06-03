@@ -1,7 +1,38 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
-from main.models import Menu,Deserts,User,Additives
+from main.models import Menu, Deserts, User, Additives, Stock
+
+from django.http import HttpResponse
+import json
+
+
+def drinks_list_json(request):
+
+    # Получаем все объекты из таблицы menu, где position_name равно 'Drinks'
+    drinks = Menu.objects.all()
+    # Преобразуем объекты в список словарей
+    drinks_list = list(drinks.values())
+    # Преобразуем список словарей в формат JSON
+    drinks_json = json.dumps(drinks_list)
+    # Возвращаем ответ HTTP с данными в формате JSON
+    return HttpResponse(drinks_json, content_type='application/json')
+
+
+def add_stock(request):
+    if request.method == 'POST':
+        # Получаем данные из формы
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        description = request.POST.get('description')
+        idstock = 1000
+        # Создаем новую запись в таблице stock
+        new_stock = Stock(stockc_name=name, price=price, description=description)
+        new_stock.save()
+        # Возвращаем ответ HTTP с подтверждением добавления записи
+        return HttpResponse('Stock added successfully')
+    else:
+        # Возвращаем форму HTML для добавления новой записи
+        return render(request, 'add_stock.html')
 
 # import models.menu
 
