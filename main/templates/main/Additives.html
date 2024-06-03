@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Добавки</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'main/css/design2.css' %}">
+</head>
+<body>
+    <div class="sidenav">
+        <img  src="{% static 'img/logo2.png' %}">
+        <a href="/barista">Бариста</a>
+        <a href="/doc">Документы</a>
+        <a href="/menu">Меню</a>
+        <a href="/stock">Акции</a>
+        <a href="/cheklist">Чек-лист</a>
+        <a href="/inv">Инвентаризация</a>
+        <div class="niz">
+            <a href="/set">Настройки</a>
+            <a href="#">Выйти</a> 
+        </div>
+    </div>
+    <div class="block2">
+     <div class="Zag1">
+         <p><b>Добавки</b></p>
+     </div>
+     <div>
+        <div class="container1">
+          <div>
+             <input class="inp" type='text' placeholder="название "  name='product_name'>
+             <input class="inp" type='text' placeholder="категория"  name='category'>
+          </div>
+          <div>
+             <input class="inp" type='text' placeholder="цена"  name='price'>
+          </div>
+          <div>
+             <input class="inp" type='text' placeholder="id"  name='id'>
+          </div>
+        </div>   
+    <div>
+        <input type="button" class="kn2" value="Сохранить" helf="barista2">
+    </div> 
+</body>
+</html>

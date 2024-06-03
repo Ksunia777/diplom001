@@ -4,19 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Настройки</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'main/static/main/css/design2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/design2.css' %}">
 </head>
 <body>
     <div class="sidenav">
-        <img  src="../img/logo2.png">
-        <a href="#">Бариста</a>
-        <a href="#">Документы</a>
-        <a href="#">Меню</a>
-        <a href="#">Акции</a>
-        <a href="#">Чек-лист</a>
-        <a href="#">Инвентаризация</a>
+        <img  src="{% static 'img/logo2.png' %}">
+        <a href="/barista">Бариста</a>
+        <a href="/doc">Документы</a>
+        <a href="/menu">Меню</a>
+        <a href="/stock">Акции</a>
+        <a href="/cheklist">Чек-лист</a>
+        <a href="/inv">Инвентаризация</a>
         <div class="niz">
-            <a href="#">Настройки</a>
+            <a href="/set">Настройки</a>
             <a href="#">Выйти</a> 
         </div>
     </div>
@@ -43,9 +43,6 @@
      </div> 
      <div class="Zag2">
          <p><b>Настройки</b></p>
-     </div>
-     <a href="#">Русский</a>
-     <a href="#">Английский</a>
-    </div>
+     </div> 
 </body>
 </html> 

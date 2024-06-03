@@ -69,16 +69,15 @@
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
-  max-content: 300px;
   height: 40px;
-  width: 300px;
+  width: 400px;
   dorder-radius: 30px; /*нет скругления краев полей (с% тоже)  (*/
 }
 
 .mt{
   display: flex;
   justify-content: space-around;
-  color: ##d4d4d4;
+  color :#d4d4d4;
   margin-right: 20px;
 }
 
@@ -89,9 +88,9 @@
 }
 
 .kn2{
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   flex-direction: row;
-  max-content: 300px;
+  max-content: 350px;
   cursor: pointer;
   outline: none;
   text-decoration: none;

@@ -1,32 +1,24 @@
 {% load static %}
 <!DOCTYPE html>
-
-
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Меню</title>
+    <title>Меню </title>
     <link rel="stylesheet" type="text/css" href="{% static 'main/css/design2.css' %}">
 </head>
 <body>
     <div class="sidenav">
-        <img  src="../img/logo2.png">
-        <a href="#">Бариста</a>
-        <a href="#">Документы</a>
-        <a href="#">Меню</a>
-        <a href="#">Акции</a>
-        <a href="#">Чек-лист</a>
-        <a href="#">Инвентаризация</a>
+        <img  src="{% static 'img/logo2.png' %}">
+        <a href="/barista">Бариста</a>
+        <a href="/doc">Документы</a>
+        <a href="/menu">Меню</a>
+        <a href="/stock">Акции</a>
+        <a href="/cheklist">Чек-лист</a>
+        <a href="/inv">Инвентаризация</a>
         <div class="niz">
-            <a href="#">Настройки</a>
+            <a href="/set">Настройки</a>
             <a href="#">Выйти</a> 
         </div>
-
-        
-        <h2>{{ drinks_list.1.name }}</h2>
-        <p>{{ drinks_list.1.description }}</p>
-        <p>{{ drinks_list.1.cost }}</p>
-    </div>
     </div>
     <div class="block2">
      <div class="Zag1">
@@ -50,10 +42,10 @@
 {% for drink in drinks_list %}
 
 <tr>
-    <td>№</td>
+    <td>{{ drink.idmenu }}</td>
     <td>{{ drink.position_name }}</td>
     <td>{{ drink.description }}</td>
-    <td>Категория</td>
+    <td>{{ drink.category }}</td>
     <td>{{ drink.prise }}</td>
     <td><a href="#">Редактировать</a></td>
     <td><a href="#">Блокировать</a></td>
@@ -63,7 +55,7 @@
 {% endfor %}
          </table>
          <div>
-             <input type="button" class="kn2" value="Сохранить">
+             <input type="button" class="kn2" value="Добавить">
          </div>
          
          <div class="Zag2">
@@ -78,20 +70,49 @@
               <th>Блокировка</th>
               <th>Удалить</th>
             </tr>
+ {% for desert in deserts_list %}
              <tr>
-              <td>№</td>
-              <td>Название</td>
-              <td>Состав</td>
-              <td>Цена</td>
+              <td>{{desert.iddeserts}}</td>
+              <td>{{desert.name}}</td>
+              <td>{{desert.description}}</td>
+              <td>{{desert.price}}</td>
               <td><a href="#">Редактировать</a></td>
               <td><a href="#">Блокировать</a></td>
               <td><a href="#">Удалить</a></td>
+             </tr>
+ {% endfor %}
          </table>
+
          <div>
-             <input type="button" class="kn2" value="Сохранить">
-         </div>
-         </div>
-             <a href="#">Добавить список</a>
+            <input type="button" class="kn2" value="Добавить">
+        </div>
+
+         <div class="Zag2">
+            <p><b>Список добавок</b></p>
+            <table>
+                <tr>
+                 <th>№</th>
+                 <th>Название</th>
+                 <th>Цена</th>
+                 <th>Категория</th>
+                 <th>Редактирование</th>
+                 <th>Блокировка</th>
+                 <th>Удалить</th>
+    {% for additives in additives_list %}
+                <tr>
+                 <td>{{additives.idadditives}}</td>
+                 <td>{{additives.name}}</td>
+                 <td>{{additives.price}}</td>
+                 <td>{{additives.category}}</td>
+                 <td><a href="#">Редактировать</a></td>
+                 <td><a href="#">Блокировать</a></td>
+                 <td><a href="#">Удалить</a></td>
+                </tr>
+    {% endfor %}
+            </table>
+
+         <div>
+             <input type="button" class="kn2" value="Добавить">
          </div>
      </div>
     </div>

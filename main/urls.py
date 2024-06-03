@@ -3,10 +3,14 @@ from . import views
 
 urlpatterns = [
     path ('', views.index),
-    path ('avto', views.avt),
+    path ('avt', views.avt),
+    path ('add', views.add),
     path ('set', views.set),
     path ('menu',views.menu),
+    path ('menu2',views.menu2),
+    path ('des',views.des),
     path ('barista', views.barista),
+    path ('barista2', views.barista2),
     path ('cheklist', views.cheklist),
     path ('doc', views.doc),
     path ('inv',views.inv),

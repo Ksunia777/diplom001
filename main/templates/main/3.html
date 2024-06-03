@@ -7,17 +7,12 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'main/css/Design3.css' %}">
 </head>
 <body>
-    <div class="Zag1"> <img  src="../img/logo.png"  width="226" height="44"></div>
+    <div class="Zag1"> <img  src="{% static 'img/logo.png' %}"  width="226" height="44"></div>
     <div class="block2">
-     <div id="square"><p>Эспрессо</p></div>
-     <div id="square"><p>Американо</p></div>
-     <div id="square"><p>Латте</p></div>
-     <div id="square"><p>Капучино</p></div>
-     <div id="square"><p>Флэт</p></div>
-     <div id="square"><p>Раф</p></div>
-     <div id="square"><p>Какао</p></div>
-     <div id="square"><p>Мокко</p></div>
-     <div id="square"><p>Бичерин</p></div>
+ {% for drink in drinks_list %}
+
+     <div id="square"><p>{{ drink.position_name }}</p></div>
+{% endfor %}
 
     </div>
     <div class="lol">
