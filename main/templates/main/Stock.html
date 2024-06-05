@@ -26,9 +26,9 @@
      </div>
      <div class="Zag2">
          <p><b>Список Акций</b></p>
-         <p> Шестая чашка кофе в подарок</p>
-         <p> Скидка постоянным клиентам</p>
-         <p> Кофе по промокоду</p>
+{% for stock in stock_list %}
+         <p>{{ stock.stockc_name }}</p>
+{% endfor %}
      </div>
       <div>
          <a href="#">Добавить Акцию</a>

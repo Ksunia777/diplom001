@@ -19,6 +19,10 @@ def drinks_list_json(request):
 
 
 def add_stock(request):
+    stock = Stock.objects.all()
+    context = {
+        "stock_list": stock,
+        }
     if request.method == 'POST':
         # Получаем данные из формы
         name = request.POST.get('name')
@@ -29,10 +33,12 @@ def add_stock(request):
         new_stock = Stock(stockc_name=name, price=price, description=description)
         new_stock.save()
         # Возвращаем ответ HTTP с подтверждением добавления записи
+        # return render(request, 'Stock.html')
+        return render(request, 'Stock.html',context)
         return HttpResponse('Stock added successfully')
     else:
         # Возвращаем форму HTML для добавления новой записи
-        return render(request, 'Stock.html')
+        return render(request, 'Stock.html',context)
 
 # import models.menu
 
@@ -98,7 +104,11 @@ def inv(request):
 
 
 def stock(request):
-    return render(request, 'Stock.html')
+     stock = Stock.objects.all()
+     context = {
+        "stock_list": stock,
+        }
+     return render(request, 'Stock.html',context)
 
 def one(request) :
     return render(request, '1.html')
