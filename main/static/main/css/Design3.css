@@ -97,3 +97,16 @@
   height: 40px;
   width: 70px;
 }
+
+.block2 {
+  display: flex;
+}
+
+.milk-container {
+  flex: 1;
+}
+
+.syrup-container {
+  flex: 0 0 auto;
+  margin-left: 20px;
+}

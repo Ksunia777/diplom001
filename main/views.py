@@ -32,7 +32,7 @@ def add_stock(request):
         return HttpResponse('Stock added successfully')
     else:
         # Возвращаем форму HTML для добавления новой записи
-        return render(request, 'add_stock.html')
+        return render(request, 'Stock.html')
 
 # import models.menu
 
