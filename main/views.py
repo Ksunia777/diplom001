@@ -39,6 +39,14 @@ def add_stock(request):
     else:
         # Возвращаем форму HTML для добавления новой записи
         return render(request, 'Stock.html',context)
+    
+def del_stock(request):
+    if request.method == 'POST':
+        # Получаем данные из формы
+        idstock = request.POST.get('id')
+        row = Stock.objects.get(idstock=idstock)
+        row.delete()
+    return HttpResponse('Stock added successfully')
 
 # import models.menu
 

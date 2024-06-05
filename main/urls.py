@@ -5,6 +5,7 @@ urlpatterns = [
     path ('', views.index),
     path ('drinkjs', views.drinks_list_json),
     path ('addStock', views.add_stock), 
+    path ('stock/del/', views.del_stock), 
     path ('avt', views.avt),
     path ('add', views.add),
     path ('set', views.set),

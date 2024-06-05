@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title>Акции</title>
     <link rel="stylesheet" type="text/css" href="{% static 'main/css/Design.css' %}">
+    <script src="{% static 'main/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'main/js/stock.js' %}"></script>
 </head>
 <body>
     <div class="sidenav">
@@ -27,7 +29,10 @@
      <div class="Zag2">
          <p><b>Список Акций</b></p>
 {% for stock in stock_list %}
-         <p>{{ stock.stockc_name }}</p>
+         <div id="my-element-{{ stock.idstock }}" data-id="{{ stock.idstock }}">
+           <p>{{ stock.stockc_name }}</p>
+           <button onclick="deleteElement(event)">Удалить</button>
+        </div>
 {% endfor %}
      </div>
       <div>
