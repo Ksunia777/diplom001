@@ -220,12 +220,35 @@ def del_drink(request):
         row.delete()
     return HttpResponse('additives added successfully')
 
-# import models.menu
-
-
 def index(request) :
     return  HttpResponse("<h4>help</h4>")
 
+def editBarista(request):
+
+    baristaId = request.POST.get('id_user') if request.POST.get('id_user') else request.GET.get('user_id')
+    user = User.objects.get(iduser=baristaId)
+    context = {
+        'barista_data' : user
+    }
+
+    # получить из бд данные бариста
+    # передать их в контекст
+    # вывести как значения в форме редактирования
+
+    # написать для редактирования
+    if request.method == 'POST':
+
+        user.name = request.POST.get('name')
+        user.sername = request.POST.get('sername')
+        user.login = request.POST.get('login')
+        user.password = request.POST.get('password')
+
+        user.save()
+        return render(request, 'editBarista.html', context)
+    else:
+        # Возвращаем форму HTML для добавления новой записи
+
+        return render(request, 'editBarista.html', context)
 
 def avt(request):
     return render(request, 'Avtorisation.html')

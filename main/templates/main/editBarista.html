@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Бариста</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'main/css/design2.css' %}">
+</head>
+<body>
+    <div class="sidenav">
+        <img  src="{% static 'img/logo2.png' %}">
+        <a href="/barista">Бариста</a>
+        <a href="/doc">Документы</a>
+        <a href="/menu">Меню</a>
+        <a href="/stock">Акции</a>
+        <a href="/cheklist">Чек-лист</a>
+        <a href="/inv">Инвентаризация</a>
+        <div class="niz">
+            <a href="/set">Настройки</a>
+            <a href="/avt">Выйти</a> 
+        </div>
+    </div>
+    <div class="block2">
+     <div class="Zag1">
+         <p><b>Редактировать бариста</b></p>
+     </div>
+     <div>
+        <div class="container1">
+          <div>
+             <input class="inp" type='text' placeholder="имя"  name='first_name'>
+             <input class="inp" type='text' placeholder="фамилия"  name='last_name'>
+          </div>
+          <div>
+             <input class="inp" type='text' placeholder="login"  name='first_name'>
+          </div>
+          <div>
+             <input class="inp" type="password" placeholder="password"> 
+             <input class="inp"type="password" placeholder="password"> 
+          </div>
+          <form action="/user/edit/" method="post">
+            {% csrf_token %}
+            <input type="hidden" id="id_user" name="id_user" maxlength="100" value="{{ barista_data.iduser }}"><br>
+            <label for="name">Имя:</label><br>
+            <input type="text" id="name" name="name" maxlength="100" value="{{ barista_data.name }}"><br>
+            <label for="sername">Фамилия:</label><br>
+            <input type="text" id="sername" name="sername" maxlength="100" value="{{ barista_data.sername }}"><br>
+            <label for="login">Логин:</label><br>
+            <input type="text" id="login" name="login" maxlength="100" value="{{ barista_data.login }}"><br>
+            <label for="password">Пароль:</label><br>
+            <input type="text" id="password" name="password" maxlength="100" value="{{ barista_data.password }}"><br>
+            <input type="submit" value="Submit">
+        </form>
+        </div>
+           
+    <div>
+        <input type="button" class="kn2" value="Сохранить" helf="barista2">
+    </div> 
+</body>
+</html>

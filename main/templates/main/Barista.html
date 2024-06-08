@@ -46,7 +46,7 @@
                <td>{{ user.name }}</td>
                <td>{{ user.sername }}</td>
                <td>{{ user.login }}</td>
-               <td><a href="#">Редактировать</a></td>
+               <td><a href="/user/edit/?user_id={{ user.iduser }}">Редактировать</a></td>
                <td><a href="#">Блокировать</a></td>
                <td data-element-id="{{ user.iduser }}" onclick="deleteElement(event)">Удалить</td>
               </div>
