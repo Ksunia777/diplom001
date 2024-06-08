@@ -51,8 +51,8 @@
      <td>{{ drink.position_name }}</td>
      <td>{{ drink.description }}</td>
      <td>{{ drink.category }}</td>
-     <td>{{ drink.priсe }}</td>
-     <td><a href="#">Редактировать</a></td>
+     <td>{{ drink.price }}</td>
+     <td><a href="/menu/edit/?menu_id={{ drink.idmenu }}">Редактировать</a></td>
      <td><a href="#">Блокировать</a></td>
      <td data-element-id="{{ drink.idmenu }}" onclick="deleteElement(event)">Удалить</td>
     </div>

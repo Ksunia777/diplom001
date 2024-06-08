@@ -5,7 +5,7 @@ from django.db import models
 class Menu(models.Model):
     idmenu = models.AutoField(primary_key=True)
     description = models.TextField()
-    priсe = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     position_name = models.CharField(max_length=100)
     category = models.CharField(max_length=100)
 

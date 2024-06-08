@@ -17,6 +17,7 @@ urlpatterns = [
     path ('desert/del/', views.del_deserts),
     path ('menu/del/', views.del_drink),
     path ('user/edit/', views.editBarista),
+    path ('menu/edit/', views.editMenu),
     path ('task', views.task),
     path ('avt', views.avt),
     path ('add', views.add),

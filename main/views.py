@@ -129,7 +129,7 @@ def add_drink(request):
         category = request.POST.get('category')
         price = request.POST.get('price')
 
-        new_drink = Menu(position_name=name, description=description, category=category,priсe=price)
+        new_drink = Menu(position_name=name, description=description, category=category,price=price)
         new_drink.save()
         return render(request, 'Menu.html',context)
     else:
@@ -249,6 +249,30 @@ def editBarista(request):
         # Возвращаем форму HTML для добавления новой записи
 
         return render(request, 'editBarista.html', context)
+    
+def editMenu(request):
+    menuId = request.POST.get('id_menu') if request.POST.get('id_menu') else request.GET.get('menu_id')
+    menu = Menu.objects.get(idmenu=menuId)
+
+    menu.price = format(menu.price, '.2f')
+    
+    context = {
+        'menu_data' : menu
+    }
+
+    if request.method == 'POST':
+
+        menu.position_name = request.POST.get('name')
+        menu.description = request.POST.get('description')
+        menu.category = request.POST.get('category')
+        menu.price = request.POST.get('price')
+
+        menu.save()
+        return render(request, 'editMenu.html', context)
+    else:
+        # Возвращаем форму HTML для добавления новой записи
+
+        return render(request, 'editMenu.html', context)
 
 def avt(request):
     return render(request, 'Avtorisation.html')
