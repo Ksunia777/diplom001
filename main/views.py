@@ -199,7 +199,7 @@ def del_user(request):
 def del_deserts(request):
     if request.method == 'POST':
         # Получаем данные из формы
-        iddeserts = request.POST.get('id')
+        iddeserts = request.POST.get('iddeserts')
         row = Deserts.objects.get(iddeserts=iddeserts)
         row.delete()
     return HttpResponse('Deserts added successfully')
@@ -207,10 +207,18 @@ def del_deserts(request):
 def del_additives(request):
     if request.method == 'POST':
         # Получаем данные из формы
-        additives = request.POST.get('id')
-        row = Additives.objects.get(additives=additives)
+        idadditives = request.POST.get('idadditives')
+        row = Additives.objects.get(idadditives=idadditives)
         row.delete()
-    return HttpResponse('idditives added successfully')
+    return HttpResponse('additives added successfully')
+
+def del_drink(request):
+    if request.method == 'POST':
+        # Получаем данные из формы
+        idmenu = request.POST.get('idmenu')
+        row = Menu.objects.get(idmenu=idmenu)
+        row.delete()
+    return HttpResponse('additives added successfully')
 
 # import models.menu
 

@@ -4,14 +4,14 @@ function deleteElement(event) {
     const targetTd = event.target.closest('td[data-element-id]');
 
     // Получаем значение data-element-id из элемента td
-    const iddeserts = targetTd.dataset.elementId;
+    const idmenu = targetTd.dataset.elementId;
     var csrftoken = "jhgjhgjh";
   
     $.ajax({
       method: "POST",
-      url: "/desert/del/",
+      url: "/menu/del/",
       data: {
-        iddeserts: iddeserts,
+        idmenu: idmenu,
         csrfmiddlewaretoken: csrftoken
       },
       success: function(data) {
