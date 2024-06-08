@@ -113,7 +113,7 @@ def add_desert(request):
       
         new_desert = Deserts( name=name, description=description, price=price)
         new_desert.save()
-        return render(request, 'Memu.html',context)
+        return render(request, 'Menu.html',context)
     else:
         return render(request, 'Menu.html',context) 
     
@@ -191,7 +191,7 @@ def del_task(request):
 def del_user(request):
     if request.method == 'POST':
         # Получаем данные из формы
-        iduser = request.POST.get('id')
+        iduser = request.POST.get('iduser')
         row = User.objects.get(iduser=iduser)
         row.delete()
     return HttpResponse('Barista added successfully')
