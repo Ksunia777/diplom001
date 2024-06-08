@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from main.models import Menu, Deserts, User, Additives, Stock
+from main.models import Menu, Deserts, User, Additives, Stock, Task
 
 from django.http import HttpResponse
 import json
@@ -17,6 +17,51 @@ def drinks_list_json(request):
     # Возвращаем ответ HTTP с данными в формате JSON
     return HttpResponse(drinks_json, content_type='application/json')
 
+def deserts_list_json(request):
+
+    # Получаем все объекты из таблицы menu, где position_name равно 'deserts'
+    deserts = Menu.objects.all()
+    # Преобразуем объекты в список словарей
+    deserts_list = list(deserts.values())
+    # Преобразуем список словарей в формат JSON
+    deserts_json = json.dumps(deserts_list)
+    # Возвращаем ответ HTTP с данными в формате JSON
+    return HttpResponse(deserts_json, content_type='application/json')
+
+def task_list_json(request):
+
+    # Получаем все объекты из таблицы menu, где position_name равно 'Drinks'
+    task = Task.objects.all()
+    # Преобразуем объекты в список словарей
+    task_list = list(task.values())
+    # Преобразуем список словарей в формат JSON
+    task_json = json.dumps(task_list)
+    # Возвращаем ответ HTTP с данными в формате JSON
+    return HttpResponse(task_json, content_type='application/json')
+
+
+def user_list_json(request):
+
+    # Получаем все объекты из таблицы menu, где position_name равно 'Drinks'
+    user = User.objects.all()
+    # Преобразуем объекты в список словарей
+    user_list = list(user.values())
+    # Преобразуем список словарей в формат JSON
+    user_json = json.dumps(user_list)
+    # Возвращаем ответ HTTP с данными в формате JSON
+    return HttpResponse(user_json, content_type='application/json')
+
+def additives_list_json(request):
+
+    # Получаем все объекты из таблицы menu, где position_name равно 'Drinks'
+    additives = Additives.objects.all()
+    # Преобразуем объекты в список словарей
+    additives_list = list(additives.values())
+    # Преобразуем список словарей в формат JSON
+    additives_json = json.dumps(additives_list)
+    # Возвращаем ответ HTTP с данными в формате JSON
+    return HttpResponse(additives_json, content_type='application/json')
+
 
 def add_stock(request):
     stock = Stock.objects.all()
@@ -28,7 +73,7 @@ def add_stock(request):
         name = request.POST.get('name')
         price = request.POST.get('price')
         description = request.POST.get('description')
-        idstock = 1000
+        #idstock = 1000
         # Создаем новую запись в таблице stock
         new_stock = Stock(stockc_name=name, price=price, description=description)
         new_stock.save()
@@ -40,6 +85,92 @@ def add_stock(request):
         # Возвращаем форму HTML для добавления новой записи
         return render(request, 'Stock.html',context)
     
+def add_task(request):
+    task = Task.objects.all()
+    context = {
+        "task_list": task,
+        }
+    if request.method == 'POST':
+        # Получаем данные из формы
+        description = request.POST.get('description')
+        
+        new_task = Task( description=description)
+        new_task.save()
+        return render(request, 'CheckList.html',context)
+    else:
+        return render(request, 'CheckList.html',context) 
+    
+def add_desert(request):
+    desert = Deserts.objects.all()
+    context = {
+        "desert_list": desert,
+        }
+    if request.method == 'POST':
+        # Получаем данные из формы
+        name = request.POST.get('name')
+        description = request.POST.get('description')
+        price = request.POST.get('price')
+      
+        new_desert = Deserts( name=name, description=description, price=price)
+        new_desert.save()
+        return render(request, 'Memu.html',context)
+    else:
+        return render(request, 'Menu.html',context) 
+    
+def add_drink(request):
+    drink = Menu.objects.all()
+    context = {
+        "drink_list": drink,
+        }
+    if request.method == 'POST':
+        # Получаем данные из формы
+        name = request.POST.get('name')
+        description = request.POST.get('description')
+        category = request.POST.get('category')
+        price = request.POST.get('price')
+
+        new_drink = Menu(position_name=name, description=description, category=category,priсe=price)
+        new_drink.save()
+        return render(request, 'Menu.html',context)
+    else:
+        return render(request, 'Meru.html',context)  
+    
+def add_user(request):
+    user = User.objects.all()
+    context = {
+        "user_list": user 
+    } 
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        sername = request.POST.get('sername')
+        login = request.POST.get('login')
+        password = request.POST.get('password')
+
+        new_user = User(name=name,sername=sername,login=login,password=password)
+        new_user.save()
+        return render(request, 'Barista.html', context)
+    else:
+        # Возвращаем форму HTML для добавления новой записи
+        return render(request, 'Barista.html',context)
+    
+def add_addit(request):
+    additives = Additives.objects.all()
+    context = {
+        "additives_list": additives,
+        }
+    if request.method == 'POST':
+        # Получаем данные из формы
+        name = request.POST.get('name')
+        category = request.POST.get('category')
+        price = request.POST.get('price')
+      
+        new_additives = Additives( name=name, category=category, price=price)
+        new_additives.save()
+        return render(request, 'Menu.html',context)
+    else:
+        return render(request, 'Menu.html',context) 
+
+
 def del_stock(request):
     if request.method == 'POST':
         # Получаем данные из формы
@@ -47,6 +178,39 @@ def del_stock(request):
         row = Stock.objects.get(idstock=idstock)
         row.delete()
     return HttpResponse('Stock added successfully')
+
+def del_task(request):
+    if request.method == 'POST':
+        # Получаем данные из формы
+        idtask = request.POST.get('id')
+        row = Task.objects.get(idtask=idtask)
+        row.delete()
+    return HttpResponse('Task added successfully')
+
+
+def del_user(request):
+    if request.method == 'POST':
+        # Получаем данные из формы
+        iduser = request.POST.get('id')
+        row = User.objects.get(iduser=iduser)
+        row.delete()
+    return HttpResponse('Barista added successfully')
+
+def del_deserts(request):
+    if request.method == 'POST':
+        # Получаем данные из формы
+        iddeserts = request.POST.get('id')
+        row = Deserts.objects.get(iddeserts=iddeserts)
+        row.delete()
+    return HttpResponse('Deserts added successfully')
+
+def del_additives(request):
+    if request.method == 'POST':
+        # Получаем данные из формы
+        additives = request.POST.get('id')
+        row = Additives.objects.get(additives=additives)
+        row.delete()
+    return HttpResponse('idditives added successfully')
 
 # import models.menu
 
@@ -67,11 +231,11 @@ def set(request):
 
 def menu(request):
 
-    drinks = Menu.objects.all()
+    drink = Menu.objects.all()
     deserts = Deserts.objects.all()
     additives = Additives.objects.all()
     context = {
-        "drinks_list": drinks,
+        "drink_list": drink,
         "deserts_list": deserts,
         "additives_list": additives
         #        [
@@ -100,7 +264,11 @@ def barista2(request):
 
 
 def cheklist(request):
-    return render(request, 'CheckList.html')
+    task = Task.objects.all()
+    context = {
+        "task_list": task
+    }
+    return render(request, 'CheckList.html', context)
 
 
 def doc(request):
@@ -174,5 +342,13 @@ def mor(request):
 
 def evn(request):
     return render(request, 'Evening.html')
+
+def task(request):
+    task = Task.objects.all()
+    context = {
+        "task_list": task
+    
+        }
+    return render(request, 'Task.html', context)
 
 

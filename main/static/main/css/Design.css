@@ -69,7 +69,6 @@
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
-  max-content: 300px;
   height: 40px;
   width: 300px;
 }
@@ -107,7 +106,6 @@
 .kn2{
   margin-bottom: 20px;
   flex-direction: row;
-  max-content: 300px;
   cursor: pointer;
   outline: none;
   text-decoration: none;

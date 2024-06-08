@@ -17,7 +17,7 @@
         <a href="/inv">Инвентаризация</a>
         <div class="niz">
             <a href="/set">Настройки</a>
-            <a href="#">Выйти</a> 
+            <a href="/avt">Выйти</a> 
         </div>
     </div>
     <div class="block2">
@@ -39,14 +39,14 @@
             </tr>
             
 
-{% for drink in drinks_list %}
+{% for drink in drink_list %}
 
 <tr>
     <td>{{ drink.idmenu }}</td>
     <td>{{ drink.position_name }}</td>
     <td>{{ drink.description }}</td>
     <td>{{ drink.category }}</td>
-    <td>{{ drink.prise }}</td>
+    <td>{{ drink.priсe }}</td>
     <td><a href="#">Редактировать</a></td>
     <td><a href="#">Блокировать</a></td>
     <td><a href="#">Удалить</a></td>
@@ -54,9 +54,9 @@
 
 {% endfor %}
          </table>
-         <div>
-             <input type="button" class="kn2" value="Добавить">
-         </div>
+         <a href="/menu2" class="kn2-link">
+            <input type="button" class="kn2" value="Добавить" >
+        </a> 
          
          <div class="Zag2">
          <p><b>Список десертов</b></p>
@@ -83,9 +83,9 @@
  {% endfor %}
          </table>
 
-         <div>
-            <input type="button" class="kn2" value="Добавить">
-        </div>
+         <a href="/des" class="kn2-link">
+            <input type="button" class="kn2" value="Добавить" >
+        </a> 
 
          <div class="Zag2">
             <p><b>Список добавок</b></p>
@@ -111,9 +111,9 @@
     {% endfor %}
             </table>
 
-         <div>
-             <input type="button" class="kn2" value="Добавить">
-         </div>
+            <a href="/add" class="kn2-link">
+                <input type="button" class="kn2" value="Добавить" >
+            </a> 
      </div>
     </div>
 </body>

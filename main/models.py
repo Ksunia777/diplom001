@@ -5,9 +5,9 @@ from django.db import models
 class Menu(models.Model):
     idmenu = models.AutoField(primary_key=True)
     description = models.TextField()
+    priсe = models.DecimalField(max_digits=10, decimal_places=2)
     position_name = models.CharField(max_length=100)
     category = models.CharField(max_length=100)
-    prise = models.DecimalField(max_digits=10, decimal_places=2)
 
     class Meta:
         managed = False
@@ -25,9 +25,10 @@ class Deserts(models.Model):
 
 class User(models.Model):
     iduser = models.AutoField(primary_key=True)
-    userc_name = models.CharField(max_length=100)
-    userc_sername = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
+    sername = models.CharField(max_length=100)
     login = models.CharField(max_length=100)
+    password = models.CharField(max_length=255)
 
     class Meta:
         managed = False
@@ -52,3 +53,11 @@ class Stock(models.Model):
     class Meta:
         managed = False
         db_table = 'stock'
+
+class Task(models.Model):
+    idtask = models.AutoField(primary_key=True)
+    description = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'task'

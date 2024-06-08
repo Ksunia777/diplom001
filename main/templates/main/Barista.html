@@ -17,7 +17,7 @@
         <a href="/inv">Инвентаризация</a>
         <div class="niz">
             <a href="/set">Настройки</a>
-            <a href="#">Выйти</a> 
+            <a href="/avt">Выйти</a> 
         </div>
     </div>
     <div class="block2">
@@ -40,8 +40,8 @@
 {% for user in user_list %}
              <tr>
               <td>{{ user.iduser }}</td>
-              <td>{{ user.userc_name }}</td>
-              <td>{{ user.userc_sername }}</td>
+              <td>{{ user.name }}</td>
+              <td>{{ user.sername }}</td>
               <td>{{ user.login }}</td>
               <td><a href="#">Редактировать</a></td>
               <td><a href="#">Блокировать</a></td>
@@ -50,9 +50,9 @@
 {% endfor %}
          </table>
      </div>
-     <div>
-         <input type="button" class="kn2" value="Добавить" oncl\barista2.html>
-     </div> 
+     <a href="/barista2" class="kn2-link">
+         <input type="button" class="kn2" value="Добавить" >
+     </a> 
     </div>
 </body>
 </html>
