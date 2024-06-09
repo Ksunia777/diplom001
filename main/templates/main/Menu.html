@@ -54,7 +54,7 @@
      <td>{{ drink.price }}</td>
      <td><a href="/menu/edit/?menu_id={{ drink.idmenu }}">Редактировать</a></td>
      <td><a href="#">Блокировать</a></td>
-     <td data-element-id="{{ drink.idmenu }}" onclick="deleteElement(event)">Удалить</td>
+     <td data-element-id="{{ drink.idmenu }}" onclick="deleteMenuElement(event)">Удалить</td>
     </div>
   </tr>
 
@@ -85,7 +85,7 @@
                <td>{{desert.price}}</td>
                <td><a href="/desert/edit/?desert_id={{ desert.iddeserts }}">Редактировать</a></td>
                <td><a href="#">Блокировать</a></td>
-               <td data-element-id="{{ desert.iddeserts }}" onclick="deleteElement(event)">Удалить</td>
+               <td data-element-id="{{ desert.iddeserts }}" onclick="deleteDesertElement(event)">Удалить</td>
               </div>
              </tr>
  {% endfor %}
@@ -115,7 +115,7 @@
                   <td>{{additives.category}}</td>
                   <td><a href="#">Редактировать</a></td>
                   <td><a href="#">Блокировать</a></td>
-                  <td data-element-id="{{ additives.idadditives }}" onclick="deleteElement(event)">Удалить</td>
+                  <td data-element-id="{{ additives.idadditives }}" onclick="deleteAdditivesElement(event)">Удалить</td>
                  </div>
                 </tr>
     {% endfor %}

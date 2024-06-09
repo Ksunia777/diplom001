@@ -1,4 +1,4 @@
-function deleteElement(event) {
+function deleteAdditivesElement(event) {
     event.preventDefault();
     var element = event.target.parentNode;
     const targetTd = event.target.closest('td[data-element-id]');
