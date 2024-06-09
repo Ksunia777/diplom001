@@ -1,12 +1,13 @@
 from django.shortcuts import render
 
 from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
-from main.models import Menu, Deserts, User, Additives, Stock, Task
+from main.models import Menu, Deserts, Additives, Stock, Task
 
 from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect
 import json
 
-from django.contrib.auth.models import Group
+
+from django.contrib.auth.models import Group, User
 
 from functools import wraps
 
@@ -162,22 +163,22 @@ def add_drink(request):
 @login_required
 @group_required('director')    
 def add_user(request):
-    user = User.objects.all()
-    context = {
-        "user_list": user 
-    } 
     if request.method == 'POST':
         name = request.POST.get('name')
         sername = request.POST.get('sername')
         login = request.POST.get('login')
         password = request.POST.get('password')
+        group = Group.objects.get(name='barista')
+        
 
-        new_user = User(name=name,sername=sername,login=login,password=password)
+        new_user = User.objects.create_user(first_name=name,last_name=sername,username=login,password=password)
+        new_user.groups.add(group)
+        # new_user = User
         new_user.save()
-        return render(request, 'Barista.html', context)
+        return render(request, 'AddBarista.html')
     else:
         # Возвращаем форму HTML для добавления новой записи
-        return render(request, 'Barista.html',context)
+        return render(request, 'AddBarista.html')
 
 @login_required
 @group_required('director')    
@@ -266,7 +267,7 @@ def index(request) :
 def editBarista(request):
 
     baristaId = request.POST.get('id_user') if request.POST.get('id_user') else request.GET.get('user_id')
-    user = User.objects.get(iduser=baristaId)
+    user = User.objects.get(id=baristaId)
     context = {
         'barista_data' : user
     }
@@ -278,9 +279,9 @@ def editBarista(request):
     # написать для редактирования
     if request.method == 'POST':
 
-        user.name = request.POST.get('name')
-        user.sername = request.POST.get('sername')
-        user.login = request.POST.get('login')
+        user.first_name = request.POST.get('name')
+        user.last_name = request.POST.get('sername')
+        user.username = request.POST.get('login')
         user.password = request.POST.get('password')
 
         user.save()
@@ -386,16 +387,19 @@ def des(request):
 @login_required
 @group_required('director')
 def barista(request):
-    user = User.objects.all()
+# Получение группы по имени
+    group = Group.objects.get(name='barista')
+# Получение пользователей, которые принадлежат к группе
+    users = User.objects.filter(groups__in=[group])
     context = {
-        "user_list": user
+        "user_list": users
     }
     return render(request, 'Barista.html', context)
 
 @login_required
 @group_required('director')
-def barista2(request):
-    return render(request, 'Barista2.html')
+def add_barista(request):
+    return render(request, 'AddBarista.html')
 
 @login_required
 @group_required('director')

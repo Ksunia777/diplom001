@@ -27,7 +27,7 @@ urlpatterns = [
     path ('menu2',views.menu2,),
     path ('des',views.des),
     path ('barista', views.barista),
-    path ('barista2', views.barista2),
+    path ('barista/add/', views.add_barista),
     path ('cheklist', views.cheklist),
     path ('doc', views.doc),
     path ('inv',views.inv),

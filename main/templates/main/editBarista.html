@@ -39,13 +39,13 @@
           </div>
           <form action="/user/edit/" method="post">
             {% csrf_token %}
-            <input type="hidden" id="id_user" name="id_user" maxlength="100" value="{{ barista_data.iduser }}"><br>
+            <input type="hidden" id="id_user" name="id_user" maxlength="100" value="{{ barista_data.id }}"><br>
             <label for="name">Имя:</label><br>
-            <input type="text" id="name" name="name" maxlength="100" value="{{ barista_data.name }}"><br>
+            <input type="text" id="name" name="name" maxlength="100" value="{{ barista_data.first_name }}"><br>
             <label for="sername">Фамилия:</label><br>
-            <input type="text" id="sername" name="sername" maxlength="100" value="{{ barista_data.sername }}"><br>
+            <input type="text" id="sername" name="sername" maxlength="100" value="{{ barista_data.last_name }}"><br>
             <label for="login">Логин:</label><br>
-            <input type="text" id="login" name="login" maxlength="100" value="{{ barista_data.login }}"><br>
+            <input type="text" id="login" name="login" maxlength="100" value="{{ barista_data.username }}"><br>
             <label for="password">Пароль:</label><br>
             <input type="text" id="password" name="password" maxlength="100" value="{{ barista_data.password }}"><br>
             <input type="submit" value="Submit">
