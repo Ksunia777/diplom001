@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 urlpatterns = [
@@ -45,5 +45,8 @@ urlpatterns = [
     path ('el', views.el),
     path ('inv2', views.inv2),
     path ('mor',views.mor),
-    path ('evn', views.evn)
+    path ('evn', views.evn),
+    path('accounts/', include('django.contrib.auth.urls'))
 ]
+
+

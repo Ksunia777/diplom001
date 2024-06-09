@@ -1,9 +1,26 @@
 from django.shortcuts import render
 
+from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
 from main.models import Menu, Deserts, User, Additives, Stock, Task
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect
 import json
+
+from django.contrib.auth.models import Group
+
+from functools import wraps
+
+def group_required(*group_names):
+    def decorator(view_func):
+        @wraps(view_func)
+        def wrapper(request, *args, **kwargs):
+            if not request.user.groups.filter(name__in=group_names).exists():
+                return HttpResponseRedirect(f'/accounts/login?next={request.path}')
+            return view_func(request, *args, **kwargs)
+        return wraps(wrapper)(user_passes_test(lambda u: u.is_authenticated))(wrapper)
+    return decorator
+
+
 
 
 def drinks_list_json(request):
@@ -62,7 +79,8 @@ def additives_list_json(request):
     # Возвращаем ответ HTTP с данными в формате JSON
     return HttpResponse(additives_json, content_type='application/json')
 
-
+@login_required
+@group_required('director')
 def add_stock(request):
     stock = Stock.objects.all()
     context = {
@@ -85,6 +103,8 @@ def add_stock(request):
         # Возвращаем форму HTML для добавления новой записи
         return render(request, 'Stock.html',context)
     
+@login_required
+@group_required('director')    
 def add_task(request):
     task = Task.objects.all()
     context = {
@@ -99,7 +119,9 @@ def add_task(request):
         return render(request, 'CheckList.html',context)
     else:
         return render(request, 'CheckList.html',context) 
-    
+
+@login_required
+@group_required('director')    
 def add_desert(request):
     desert = Deserts.objects.all()
     context = {
@@ -116,7 +138,9 @@ def add_desert(request):
         return render(request, 'Menu.html',context)
     else:
         return render(request, 'Menu.html',context) 
-    
+
+@login_required
+@group_required('director')    
 def add_drink(request):
     drink = Menu.objects.all()
     context = {
@@ -134,7 +158,9 @@ def add_drink(request):
         return render(request, 'Menu.html',context)
     else:
         return render(request, 'Meru.html',context)  
-    
+
+@login_required
+@group_required('director')    
 def add_user(request):
     user = User.objects.all()
     context = {
@@ -152,7 +178,9 @@ def add_user(request):
     else:
         # Возвращаем форму HTML для добавления новой записи
         return render(request, 'Barista.html',context)
-    
+
+@login_required
+@group_required('director')    
 def add_addit(request):
     additives = Additives.objects.all()
     context = {
@@ -170,7 +198,8 @@ def add_addit(request):
     else:
         return render(request, 'Menu.html',context) 
 
-
+@login_required
+@group_required('director')
 def del_stock(request):
     if request.method == 'POST':
         # Получаем данные из формы
@@ -179,6 +208,8 @@ def del_stock(request):
         row.delete()
     return HttpResponse('Stock added successfully')
 
+@login_required
+@group_required('director')
 def del_task(request):
     if request.method == 'POST':
         # Получаем данные из формы
@@ -187,7 +218,8 @@ def del_task(request):
         row.delete()
     return HttpResponse('Task added successfully')
 
-
+@login_required
+@group_required('director')
 def del_user(request):
     if request.method == 'POST':
         # Получаем данные из формы
@@ -196,6 +228,8 @@ def del_user(request):
         row.delete()
     return HttpResponse('Barista added successfully')
 
+@login_required
+@group_required('director')
 def del_deserts(request):
     if request.method == 'POST':
         # Получаем данные из формы
@@ -204,6 +238,8 @@ def del_deserts(request):
         row.delete()
     return HttpResponse('Deserts added successfully')
 
+@login_required
+@group_required('director')
 def del_additives(request):
     if request.method == 'POST':
         # Получаем данные из формы
@@ -212,6 +248,8 @@ def del_additives(request):
         row.delete()
     return HttpResponse('additives added successfully')
 
+@login_required
+@group_required('director')
 def del_drink(request):
     if request.method == 'POST':
         # Получаем данные из формы
@@ -223,6 +261,8 @@ def del_drink(request):
 def index(request) :
     return  HttpResponse("<h4>help</h4>")
 
+@login_required
+@group_required('director')
 def editBarista(request):
 
     baristaId = request.POST.get('id_user') if request.POST.get('id_user') else request.GET.get('user_id')
@@ -249,7 +289,9 @@ def editBarista(request):
         # Возвращаем форму HTML для добавления новой записи
 
         return render(request, 'editBarista.html', context)
-    
+
+@login_required
+@group_required('director')   
 def editMenu(request):
     menuId = request.POST.get('id_menu') if request.POST.get('id_menu') else request.GET.get('menu_id')
     menu = Menu.objects.get(idmenu=menuId)
@@ -273,7 +315,9 @@ def editMenu(request):
         # Возвращаем форму HTML для добавления новой записи
 
         return render(request, 'editMenu.html', context)
-    
+
+@login_required
+@group_required('director')    
 def editDesert(request):
     desertId = request.POST.get('id_desert') if request.POST.get('id_desert') else request.GET.get('desert_id')
     desert = Deserts.objects.get(iddeserts=desertId)
@@ -300,13 +344,18 @@ def editDesert(request):
 def avt(request):
     return render(request, 'Avtorisation.html')
 
+@login_required
+@group_required('director')
 def add(request):
     return render(request, 'Additives.html')
 
-
+@login_required
+@group_required('director')
 def set(request):
     return render(request, 'Settings.html')
 
+@login_required
+@group_required('director')
 def menu(request):
 
     drink = Menu.objects.all()
@@ -324,12 +373,18 @@ def menu(request):
         }
     return render(request, 'Menu.html', context)
 
+@login_required
+@group_required('director')
 def menu2(request):
     return render(request, 'Menu2.html')
 
+@login_required
+@group_required('director')
 def des(request):
     return render(request, 'Deserts.html')
 
+@login_required
+@group_required('director')
 def barista(request):
     user = User.objects.all()
     context = {
@@ -337,10 +392,13 @@ def barista(request):
     }
     return render(request, 'Barista.html', context)
 
+@login_required
+@group_required('director')
 def barista2(request):
     return render(request, 'Barista2.html')
 
-
+@login_required
+@group_required('director')
 def cheklist(request):
     task = Task.objects.all()
     context = {
@@ -348,15 +406,18 @@ def cheklist(request):
     }
     return render(request, 'CheckList.html', context)
 
-
+@login_required
+@group_required('director')
 def doc(request):
     return render(request, 'Documentation.html')
 
-
+@login_required
+@group_required('director')
 def inv(request):
     return render(request, 'Inventorisation.html')
 
-
+@login_required
+@group_required('director')
 def stock(request):
      stock = Stock.objects.all()
      context = {
@@ -364,14 +425,18 @@ def stock(request):
         }
      return render(request, 'Stock.html',context)
 
+@login_required
+@group_required('barista')
 def one(request) :
     return render(request, '1.html')
 
-
+@login_required
+@group_required('barista')
 def two(request):
     return render(request, '2.html')
 
-
+@login_required
+@group_required('barista')
 def three(request):
   
     drinks = Menu.objects.all()
@@ -381,46 +446,63 @@ def three(request):
         }
     return render(request, '3.html', context)
 
+@login_required
+@group_required('barista')
 def four(request):
     return render(request, '4.html')
 
+@login_required
+@group_required('barista')
 def five(request):
     return render(request, '5.html')
 
-
+@login_required
+@group_required('barista')
 def six(request):
     return render(request, '6.html')
 
-
+@login_required
+@group_required('barista')
 def sev(request):
   return render(request, '7.html')
 
-
+@login_required
+@group_required('barista')
 def eight(request):
     return render(request, '8.html')
 
-
+@login_required
+@group_required('barista')
 def nine(request):
     return render(request, '9.html')
 
-
+@login_required
+@group_required('barista')
 def ten(request):
     return render(request, '10.html')
 
-
+@login_required
+@group_required('barista')
 def el(request):
     return render(request, '11.html')
 
+@login_required
+@group_required('barista')
 def inv2(request):
     return render(request, 'Inv2.html')
 
+@login_required
+@group_required('barista')
 def mor(request):
     return render(request, 'Morning.html')
 
-
+@login_required
+@group_required('barista')
 def evn(request):
     return render(request, 'Evening.html')
 
+@login_required
+@group_required('barista')
 def task(request):
     task = Task.objects.all()
     context = {
