@@ -255,7 +255,7 @@ def editMenu(request):
     menu = Menu.objects.get(idmenu=menuId)
 
     menu.price = format(menu.price, '.2f')
-    
+
     context = {
         'menu_data' : menu
     }
@@ -273,6 +273,29 @@ def editMenu(request):
         # Возвращаем форму HTML для добавления новой записи
 
         return render(request, 'editMenu.html', context)
+    
+def editDesert(request):
+    desertId = request.POST.get('id_desert') if request.POST.get('id_desert') else request.GET.get('desert_id')
+    desert = Deserts.objects.get(iddeserts=desertId)
+
+    desert.price = format(desert.price, '.2f')
+    
+    context = {
+        'desert_data' : desert
+    }
+
+    if request.method == 'POST':
+
+        desert.name = request.POST.get('name')
+        desert.description = request.POST.get('description')
+        desert.price = request.POST.get('price')
+
+        desert.save()
+        return render(request, 'editDeserts.html', context)
+    else:
+        # Возвращаем форму HTML для добавления новой записи
+
+        return render(request, 'editDeserts.html', context)
 
 def avt(request):
     return render(request, 'Avtorisation.html')
