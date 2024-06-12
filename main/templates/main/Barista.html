@@ -41,14 +41,14 @@
 
 {% for user in user_list %}
              <tr>
-              <div id="my-element-{{ user.iduser }}" data-id="{{ user.iduser }}">
+              <div id="my-element-{{ user.id }}" data-id="{{ user.id }}">
                <td>{{ user.id }}</td>
                <td>{{ user.first_name }}</td>
                <td>{{ user.last_name }}</td>
                <td>{{ user.username }}</td>
                <td><a href="/user/edit/?user_id={{ user.id}}">Редактировать</a></td>
                <td><a href="#">Блокировать</a></td>
-               <td data-element-id="{{ user.iduser }}" onclick="deleteElement(event)">Удалить</td>
+               <td data-element-id="{{ user.id }}" onclick="deleteElement(event)">Удалить</td>
               </div>
             </tr>
 {% endfor %}

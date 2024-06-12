@@ -224,8 +224,8 @@ def del_task(request):
 def del_user(request):
     if request.method == 'POST':
         # Получаем данные из формы
-        iduser = request.POST.get('iduser')
-        row = User.objects.get(iduser=iduser)
+        id = request.POST.get('id')
+        row = User.objects.get(id=id)
         row.delete()
     return HttpResponse('Barista added successfully')
 
