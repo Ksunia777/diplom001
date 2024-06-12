@@ -1,0 +1,58 @@
+.header-icons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .icon-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #D9D9D9;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 60px;
+    font-size: 18px;
+  }
+  
+  .icon-bell {
+    width: 30px;
+    height: 30px;
+    margin-right: 40px;
+    background-image: url('/main/static/img/bell.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-size: 30px 30px; /* Уменьшаем размер иконки */
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+
+  .header-icons {
+    position: relative;
+  }
+  
+  .icon-circle {
+    cursor: pointer;
+  }
