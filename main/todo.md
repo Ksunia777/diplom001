@@ -48,3 +48,9 @@ $('.checkbox-ios input').focusout(function(){
 });
 
 ```
+
+## openssl
+
+openssl enc -aes-256-cbc -in ./diplom/diplom.docx -out ./diplom/diplom.docx.enc -iter 10000000
+
+openssl enc -aes-256-cbc -d -in ./diplom/diplom.docx.enc -out ./diplom/diplom.docx -iter 10000000
