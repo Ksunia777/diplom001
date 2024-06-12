@@ -8,6 +8,7 @@ class Menu(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     position_name = models.CharField(max_length=100)
     category = models.CharField(max_length=100)
+    active = models.BooleanField(max_length=1)
 
     class Meta:
         managed = False

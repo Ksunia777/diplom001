@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Меню </title>
     <link rel="stylesheet" type="text/css" href="{% static 'main/css/design2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/design4.css' %}">
     <script src="{% static 'main/js/jquery-3.6.0.min.js' %}"></script>
     <script src="{% static 'main/js/additives.js' %}"></script>
     <script src="{% static 'main/js/desert.js' %}"></script>
@@ -52,9 +53,16 @@
      <td>{{ drink.description }}</td>
      <td>{{ drink.category }}</td>
      <td>{{ drink.price }}</td>
-     <td><a href="/menu/edit/?menu_id={{ drink.idmenu }}">Редактировать</a></td>
-     <td><a href="#">Блокировать</a></td>
-     <td data-element-id="{{ drink.idmenu }}" onclick="deleteMenuElement(event)">Удалить</td>
+    <td><a href="/menu/edit/?menu_id={{ drink.idmenu }}">Редактировать</a></td>
+    <td class="radiobatton-td">
+        <!-- <a href="#">Блокировать</a> -->
+        <label class="checkbox-ios">
+            <input type="checkbox" {% if drink.active %} checked{% endif %}>
+            <span class="checkbox-ios-switch"></span>
+        </label>
+    </td>
+
+     <td class="my-button" data-element-id="{{ drink.idmenu }}" onclick="deleteMenuElement(event)"></td>
     </div>
   </tr>
 
@@ -85,7 +93,7 @@
                <td>{{desert.price}}</td>
                <td><a href="/desert/edit/?desert_id={{ desert.iddeserts }}">Редактировать</a></td>
                <td><a href="#">Блокировать</a></td>
-               <td data-element-id="{{ desert.iddeserts }}" onclick="deleteDesertElement(event)">Удалить</td>
+               <td class="my-button" data-element-id="{{ desert.iddeserts }}" onclick="deleteDesertElement(event)"></td>
               </div>
              </tr>
  {% endfor %}
@@ -115,7 +123,7 @@
                   <td>{{additives.category}}</td>
                   <td><a href="#">Редактировать</a></td>
                   <td><a href="#">Блокировать</a></td>
-                  <td data-element-id="{{ additives.idadditives }}" onclick="deleteAdditivesElement(event)">Удалить</td>
+                  <td class="my-button" data-element-id="{{ additives.idadditives }}" onclick="deleteAdditivesElement(event)"></td>
                  </div>
                 </tr>
     {% endfor %}

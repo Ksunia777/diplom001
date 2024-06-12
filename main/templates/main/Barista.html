@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<title>Бариста</title>
 	<link rel="stylesheet" type="text/css" href="{% static 'main/css/design2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/design4.css' %}">
     <script src="{% static 'main/js/jquery-3.6.0.min.js' %}"></script>
     <script src="{% static 'main/js/barista.js' %}"></script>
 </head>
@@ -48,7 +49,7 @@
                <td>{{ user.username }}</td>
                <td><a href="/user/edit/?user_id={{ user.id}}">Редактировать</a></td>
                <td><a href="#">Блокировать</a></td>
-               <td data-element-id="{{ user.id }}" onclick="deleteElement(event)">Удалить</td>
+               <td class="my-button" data-element-id="{{ user.id }}" onclick="deleteElement(event)"></td>
               </div>
             </tr>
 {% endfor %}

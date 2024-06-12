@@ -149,6 +149,7 @@ td, th {
     border-color: black;
     background-color: #f1f1f1;
     padding: 5xp;
+    background-position: center;
 }
 
 /*ProgressBar и подвязка кодом -- геймификация*/
