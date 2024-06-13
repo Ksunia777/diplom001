@@ -19,6 +19,7 @@ urlpatterns = [
     path ('user/edit/', views.editBarista),
     path ('menu/edit/', views.editMenu),
     path ('desert/edit/', views.editDesert),
+    path ('additives/edit/', views.editAdditives),
     path ('task', views.task),
     path ('avt', views.avt),
     path ('add', views.add),

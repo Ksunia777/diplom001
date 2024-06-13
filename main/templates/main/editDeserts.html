@@ -25,31 +25,17 @@
          <p><b>Десерты</b></p>
      </div>
      <div>
-        <div class="container1">
-          <div>
-             <input class="inp" type='text' placeholder="название "  name='product_name'>
-             <input class="inp" type='text' placeholder="состав"  name='description'>
-          </div>
-          <div>
-             <input class="inp" type='text' placeholder="цена"  name='price'>
-          </div>
-          <div>
-             <input class="inp" type='text' placeholder="id"  name='id'>
-          </div>
           <form action="/desert/edit/" method="post">
             {% csrf_token %}
-            <input type="hidden" id="id_desert" name="id_desert" maxlength="100" value="{{ desert_data.iddeserts }}"><br>
+            <input class="kn2" type="hidden" id="id_desert" name="id_desert" maxlength="100" value="{{ desert_data.iddeserts }}"><br>
             <label for="name">Название:</label><br>
-            <input type="text" id="name" name="name" maxlength="100" value="{{ desert_data.name }}"><br>
+            <input class="inp" type="text" id="name" name="name" maxlength="100" value="{{ desert_data.name }}"><br>
             <label for="price">Цена:</label><br>
-            <input type="number" step="0.01" id="price" name="price" max="999999.99" value="{{ desert_data.price }}"><br>
+            <input class="inp" type="number" step="0.01" id="price" name="price" max="999999.99" value="{{ desert_data.price }}"><br>
             <label for="description">Состав:</label><br>
-            <input type="text" id="description" name="description" maxlength="100" value="{{ desert_data.description}}"><br>
-            <input type="submit" value="Submit">
+            <input class="inp" type="text" id="description" name="description" maxlength="100" value="{{ desert_data.description}}"><br>
+            <input type="submit" class="kn2" value="Submit">
         </form>
         </div>   
-    <div>
-        <input type="button" class="kn2" value="Сохранить" helf="barista2">
-    </div> 
 </body>
 </html>

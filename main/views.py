@@ -341,6 +341,31 @@ def editDesert(request):
         # Возвращаем форму HTML для добавления новой записи
 
         return render(request, 'editDeserts.html', context)
+    
+@login_required
+@group_required('director')    
+def editAdditives(request):
+    additivesId = request.POST.get('id_additives') if request.POST.get('id_additives') else request.GET.get('additives_id')
+    additives = Additives.objects.get(idadditives=additivesId)
+
+    additives.price = format(additives.price, '.2f')
+    
+    context = {
+        'additives_data' : additives
+    }
+
+    if request.method == 'POST':
+
+        additives.name = request.POST.get('name')
+        additives.category = request.POST.get('category')
+        additives.price = request.POST.get('price')
+
+        additives.save()
+        return render(request, 'editAdditives.html', context)
+    else:
+        # Возвращаем форму HTML для добавления новой записи
+
+        return render(request, 'editAdditives.html', context)
 
 def avt(request):
     return render(request, 'Avtorisation.html')
