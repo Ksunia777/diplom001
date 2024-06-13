@@ -92,7 +92,13 @@
                <td>{{desert.description}}</td>
                <td>{{desert.price}}</td>
                <td><a href="/desert/edit/?desert_id={{ desert.iddeserts }}">Редактировать</a></td>
-               <td><a href="#">Блокировать</a></td>
+               <td class="radiobatton-td">
+                <!-- <a href="#">Блокировать</a> -->
+                 <label class="checkbox-ios">
+                    <input type="checkbox" {% if desert.active %} checked{% endif %}>
+                    <span class="checkbox-ios-switch"></span>
+                 </label>
+               </td>
                <td class="my-button" data-element-id="{{ desert.iddeserts }}" onclick="deleteDesertElement(event)"></td>
               </div>
              </tr>
@@ -122,7 +128,13 @@
                   <td>{{additives.price}}</td>
                   <td>{{additives.category}}</td>
                   <td><a href="/additives/edit/?additives_id={{ additives.idadditives }}">Редактировать</a></td>
-                  <td><a href="#">Блокировать</a></td>
+                    <td class="radiobatton-td">
+                     <!-- <a href="#">Блокировать</a> -->
+                     <label class="checkbox-ios">
+                        <input type="checkbox" {% if additives.active %} checked{% endif %}>
+                        <span class="checkbox-ios-switch"></span>
+                     </label>
+                    </td>
                   <td class="my-button" data-element-id="{{ additives.idadditives }}" onclick="deleteAdditivesElement(event)"></td>
                  </div>
                 </tr>

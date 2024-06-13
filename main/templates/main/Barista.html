@@ -48,7 +48,13 @@
                <td>{{ user.last_name }}</td>
                <td>{{ user.username }}</td>
                <td><a href="/user/edit/?user_id={{ user.id}}">Редактировать</a></td>
-               <td><a href="#">Блокировать</a></td>
+               <td class="radiobatton-td">
+                 <!-- <a href="#">Блокировать</a> -->
+                 <label class="checkbox-ios">
+                    <input type="checkbox" {% if user.is_active %} checked{% endif %}>
+                    <span class="checkbox-ios-switch"></span>
+                 </label>
+               </td>
                <td class="my-button" data-element-id="{{ user.id }}" onclick="deleteElement(event)"></td>
               </div>
             </tr>

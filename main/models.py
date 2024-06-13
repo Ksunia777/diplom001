@@ -19,6 +19,7 @@ class Deserts(models.Model):
     description = models.TextField()
     name = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=10, decimal_places=2)
+    active = models.BooleanField(max_length=1)
 
     class Meta:
         managed = False
@@ -30,7 +31,7 @@ class User(models.Model):
     sername = models.CharField(max_length=100)
     login = models.CharField(max_length=100)
     password = models.CharField(max_length=255)
-
+    is_active = models.BooleanField(max_length=1)
     class Meta:
         managed = False
         db_table = 'user'
@@ -40,6 +41,7 @@ class Additives(models.Model):
     name = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     category = models.CharField(max_length=100)
+    active = models.BooleanField(max_length=1)
 
     class Meta:
         managed = False
