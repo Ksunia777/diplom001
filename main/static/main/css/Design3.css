@@ -101,10 +101,6 @@ justify-content: center;
   width: 70px;
 }
 
-.block2 {
-  display: flex;
-}
-
 .milk-container {
   flex: 1;
 }
