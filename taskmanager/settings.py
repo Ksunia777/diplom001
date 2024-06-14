@@ -25,7 +25,10 @@ SECRET_KEY = "django-insecure-bo4ac+1h&)7+8-qlluk8o4@rq&q+g$h3!wu#$6(s#_u0lc-hkn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "coffepay.ru",
+    "127.0.0.1"
+]
 
 
 # Application definition
