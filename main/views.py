@@ -5,6 +5,8 @@ from main.models import Menu, Deserts, Additives, Stock, Task
 
 from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect
 import json
+from django.contrib.auth import login, logout, authenticate
+from django.shortcuts import redirect, render
 
 
 from django.contrib.auth.models import Group, User
@@ -541,3 +543,33 @@ def task(request):
     return render(request, 'Task.html', context)
 
 
+def custom_login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+
+            if user.groups.filter(name='barista').exists():
+                return redirect('/one')
+            elif user.groups.filter(name='director').exists():
+                return redirect('/menu')
+
+            # Проверяем роль пользователя и перенаправляем его на соответствующую страницу
+            if user.is_superuser:
+                return redirect('admin:index')
+            else:
+                return redirect('dashboard')
+        else:
+            # Отображаем сообщение об ошибке входа
+            error_message = 'Invalid username or password'
+            return render(request, 'login.html', {'error_message': error_message})
+    else:
+        return render(request, 'login.html')
+
+
+def custom_logout(request):
+    logout(request)
+    # Перенаправление на страницу входа
+    return redirect('login')
