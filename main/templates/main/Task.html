@@ -8,13 +8,19 @@
 </head>
 <body>
     <div class="Zag1"> <img  src="{% static 'img/logo.png' %}"  width="226" height="44"></div>
-    <div class="block2">
-{% for task in task_list %}   
-     <p>{{ task.description }}</p>   
-{% endfor %}
-     <div>
-         <input type="button" class="kn2" value="Сделано">
-     </div> 
-    
+   <div class="blockTaskWithButton">
+    <div class="blockTask">
+        {% for task in task_list %}
+          <div class="task-item">
+            <p>{{ task.description }}9999999999999</p>
+            <input type="checkbox" class="task-checkbox">
+          </div>
+        {% endfor %}
+        <div>
+            <input type="button" class="kn2" value="Сделано">
+        </div> 
+      </div>
+
+   </div>
 </body>
 </html>

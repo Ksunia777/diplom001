@@ -109,3 +109,45 @@ justify-content: center;
   flex: 0 0 auto;
   margin-left: 20px;
 }
+
+.blockTask {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.task-item p {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 170px;
+  margin: 0;
+}
+
+.task-checkbox {
+  margin-left: 10px;
+}
+
+
+
+.blockTaskWithButton {
+  text-align: center;
+}
+
+
+input[type="checkbox"]:checked + label::before {
+  background-color: green !important;
+}
