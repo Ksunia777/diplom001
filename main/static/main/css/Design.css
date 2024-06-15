@@ -64,11 +64,12 @@
   height: 500px;
 }
 .one {
+  display: block;
+  margin: auto;
   margin-bottom: 20px;
-  display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: center;
+  align-items: center;
   height: 40px;
   width: 300px;
 }
@@ -104,13 +105,14 @@
 }
 
 .kn2{
+  display: block;
+  margin: auto;
   margin-bottom: 20px;
   flex-direction: row;
   cursor: pointer;
   outline: none;
   text-decoration: none;
   font-size: 14px;
-  vertical-align: middle;
   color: rgb(255 255 255);
   text-align: center;
   border-radius: 4px;
@@ -138,4 +140,38 @@ td, th {
     border-color: black;
     background-color: #f1f1f1;
     padding: 5xp;
+}
+
+input[type="submit"] {
+  display: block;
+  margin: auto;
+  background-color: #419152;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+label {
+  display: block;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.logo {
+  display: block;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.Av {
+  display: block;
+  text-align: center;
+  margin-bottom: 5px;
 }

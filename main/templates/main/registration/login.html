@@ -1,39 +1,44 @@
 
 {% block content %}
+{% load static %}
+<html>
+<head>
+	<meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'main/css/Design.css' %}">
+</head>
+<body>
+  <div class="logo">
+     <img  src="{% static 'img/logo.png' %}">
+  </div>
+  <div class="Av">
+    <p><b>Авторизация</b></p>
+  </div>
+  <div class="block">Авторизация для сотрудников кофейни “Spring coffee”</div>
+
 
 {% if form.errors %}
-  <p>Your username and password didn't match. Please try again.</p>
-{% endif %}
-
-{% if next %}
-  {% if user.is_authenticated %}
-    <p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
-  {% else %}
-    <p>Please login to see this page.</p>
-  {% endif %}
+  <p>YНеверно введены логин или пароль. Попробуйте снова.</p>
 {% endif %}
 
 <form method="post" action="{% url 'custom_login' %}">
 {% csrf_token %}
-<table>
+<div class="Av1">
+  <div>
+    <label for="id_username">Имя пользователя:</label>
+    <input class="one" type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
+  </div>
 
-<tr>
-  <td>{{ form.username.label_tag }}</td>
-  <td>{{ form.username }}</td>
-</tr>
+  <div>
+    <label for="id_password">Пароль:</label>
+    <input class="one" type="password" name="password" autocomplete="current-password" required="" id="id_password">
+  </div>
+</div>
 
-<tr>
-  <td>{{ form.password.label_tag }}</td>
-  <td>{{ form.password }}</td>
-</tr>
-</table>
 
-<input type="submit" value="login" />
+
+<input class="kn1" type="submit" value="Войти" />
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
 
-{# Assumes you setup the password_reset view in your URLconf #}
-<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
 
 {% endblock %}
