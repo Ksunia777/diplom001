@@ -31,7 +31,7 @@ justify-content: center;
 
 .Kn2{
   display: flex;
-    
+
   justify-content: center;
   align-items: center;
   position: sticky;
@@ -64,7 +64,7 @@ justify-content: center;
 .lol{
     margin-top: 50px;
     text-align: center;
-    height: 100px; 
+    height: 100px;
     margin-left: 70%;
     margin-right: 20px;
 }
@@ -151,3 +151,14 @@ justify-content: center;
 input[type="checkbox"]:checked + label::before {
   background-color: green !important;
 }
+
+.price {
+  font-size: 14px;
+  color: #999;
+  margin-left: 10px;
+}
+
+#square:hover {
+  cursor: pointer;
+}
+

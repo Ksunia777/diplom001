@@ -105,9 +105,9 @@ def add_stock(request):
     else:
         # Возвращаем форму HTML для добавления новой записи
         return render(request, 'Stock.html',context)
-    
+
 @login_required
-@group_required('director')    
+@group_required('director')
 def add_task(request):
     task = Task.objects.all()
     context = {
@@ -116,15 +116,15 @@ def add_task(request):
     if request.method == 'POST':
         # Получаем данные из формы
         description = request.POST.get('description')
-        
+
         new_task = Task( description=description)
         new_task.save()
         return render(request, 'CheckList.html',context)
     else:
-        return render(request, 'CheckList.html',context) 
+        return render(request, 'CheckList.html',context)
 
 @login_required
-@group_required('director')    
+@group_required('director')
 def add_desert(request):
     desert = Deserts.objects.all()
     context = {
@@ -135,15 +135,15 @@ def add_desert(request):
         name = request.POST.get('name')
         description = request.POST.get('description')
         price = request.POST.get('price')
-      
+
         new_desert = Deserts( name=name, description=description, price=price)
         new_desert.save()
         return render(request, 'Menu.html',context)
     else:
-        return render(request, 'Menu.html',context) 
+        return render(request, 'Menu.html',context)
 
 @login_required
-@group_required('director')    
+@group_required('director')
 def add_drink(request):
     drink = Menu.objects.all()
     context = {
@@ -160,10 +160,10 @@ def add_drink(request):
         new_drink.save()
         return render(request, 'Menu.html',context)
     else:
-        return render(request, 'Meru.html',context)  
+        return render(request, 'Meru.html',context)
 
 @login_required
-@group_required('director')    
+@group_required('director')
 def add_user(request):
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -171,7 +171,7 @@ def add_user(request):
         login = request.POST.get('login')
         password = request.POST.get('password')
         group = Group.objects.get(name='barista')
-        
+
 
         new_user = User.objects.create_user(first_name=name,last_name=sername,username=login,password=password)
         new_user.groups.add(group)
@@ -183,7 +183,7 @@ def add_user(request):
         return render(request, 'AddBarista.html')
 
 @login_required
-@group_required('director')    
+@group_required('director')
 def add_addit(request):
     additives = Additives.objects.all()
     context = {
@@ -194,12 +194,12 @@ def add_addit(request):
         name = request.POST.get('name')
         category = request.POST.get('category')
         price = request.POST.get('price')
-      
+
         new_additives = Additives( name=name, category=category, price=price)
         new_additives.save()
         return render(request, 'Menu.html',context)
     else:
-        return render(request, 'Menu.html',context) 
+        return render(request, 'Menu.html',context)
 
 @login_required
 @group_required('director')
@@ -294,7 +294,7 @@ def editBarista(request):
         return render(request, 'editBarista.html', context)
 
 @login_required
-@group_required('director')   
+@group_required('director')
 def editMenu(request):
     menuId = request.POST.get('id_menu') if request.POST.get('id_menu') else request.GET.get('menu_id')
     menu = Menu.objects.get(idmenu=menuId)
@@ -320,13 +320,13 @@ def editMenu(request):
         return render(request, 'editMenu.html', context)
 
 @login_required
-@group_required('director')    
+@group_required('director')
 def editDesert(request):
     desertId = request.POST.get('id_desert') if request.POST.get('id_desert') else request.GET.get('desert_id')
     desert = Deserts.objects.get(iddeserts=desertId)
 
     desert.price = format(desert.price, '.2f')
-    
+
     context = {
         'desert_data' : desert
     }
@@ -343,15 +343,15 @@ def editDesert(request):
         # Возвращаем форму HTML для добавления новой записи
 
         return render(request, 'editDeserts.html', context)
-    
+
 @login_required
-@group_required('director')    
+@group_required('director')
 def editAdditives(request):
     additivesId = request.POST.get('id_additives') if request.POST.get('id_additives') else request.GET.get('additives_id')
     additives = Additives.objects.get(idadditives=additivesId)
 
     additives.price = format(additives.price, '.2f')
-    
+
     context = {
         'additives_data' : additives
     }
@@ -469,11 +469,11 @@ def two(request):
 @login_required
 @group_required('barista')
 def three(request):
-  
-    drinks = Menu.objects.all()
+
+    drinks = Menu.objects.filter(active=True)
     context = {
         "drinks_list": drinks
-    
+
         }
     return render(request, '3.html', context)
 
@@ -538,7 +538,7 @@ def task(request):
     task = Task.objects.all()
     context = {
         "task_list": task
-    
+
         }
     return render(request, 'Task.html', context)
 

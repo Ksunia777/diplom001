@@ -11,15 +11,28 @@
     <div class="block2">
  {% for drink in drinks_list %}
 
-     <div id="square"><p>{{ drink.position_name }}</p></div>
+     <div id="square"><p>{{ drink.position_name }} <br> <span class="price">{{ drink.price}} руб.</span></p></div>
 {% endfor %}
 
     </div>
     <div class="lol">
        <input class="inp" type='text' placeholder="Клиент"  name='first_name'>
+
+       <div id="check" class="check"></div>
      <div>
          <input type="button" class="kn2" value="Оплатить">
-     </div> 
+     </div>
     </div>
+    <script>
+        document.querySelectorAll('#square').forEach(function(square) {
+          square.addEventListener('click', function() {
+            var drinkName = this.getElementsByTagName('p')[0].innerText.split('\n')[0];
+            var drinkPrice = parseFloat(this.getElementsByTagName('span')[0].innerText);
+            var checkDiv = document.createElement('div');
+            checkDiv.textContent = drinkName + ' - ' + drinkPrice.toFixed(2) + ' руб.';
+            document.getElementById('check').appendChild(checkDiv);
+          });
+        });
+      </script>
 </body>
 </html>
