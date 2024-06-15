@@ -564,7 +564,7 @@ def custom_login(request):
         else:
             # Отображаем сообщение об ошибке входа
             error_message = 'Invalid username or password'
-            return render(request, 'login.html', {'error_message': error_message})
+            return redirect('login')
     else:
         return render(request, 'login.html')
 
