@@ -3,6 +3,11 @@
     align-items: center;
     justify-content: flex-end;
   }
+ 
+  .header-icons a {
+    margin-right: 1220px;
+  }
+  
   
   .icon-circle {
     width: 40px;

@@ -10,11 +10,6 @@
     <div class="header-icons">
         <div class="icon-bell"></div>
         <div class="icon-circle" onclick="toggleDropdown()">A</div>
-        <div id="dropdown" class="dropdown-content" style="display: none;">
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
-        </div>
     </div>
 </head>
 <body>
@@ -23,15 +18,14 @@
      <div id="square"><a href="/two">Напитки</a></div>
      <div id="square"><a href="/five">Десерты</a></div>
      <div id="square"><a href="/task">Задания</a></div>
-   
-
     </div>
     <div class="lol">
        <input class="inp" type='text' placeholder="Клиент"  name='first_name'>
      <div>
+        <a href="/eight" class="kn2-link">
          <input type="button" class="kn2" value="Оплатить">
+        </a>
      </div> 
-
      <a href="{% url 'custom_logout' %}">Выход</a>
     </div>
 </body>
