@@ -35,18 +35,15 @@
         </div>
 {% endfor %}
      </div>
-      <div>
-         <a href="#">Добавить Акцию</a>
-      </div>
       <form action="/addStock" method="post">
         {% csrf_token %}
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" maxlength="100"><br>
-        <label for="price">Price:</label><br>
-        <input type="number" step="0.01" id="price" name="price" max="999999.99"><br>
-        <label for="description">Description:</label><br>
-        <input type="text" id="description" name="description" maxlength="100"><br>
-        <input type="submit" value="Submit">
+        <label for="name">Наименование:</label><br>
+        <input class="one" type="text" id="name" name="name" maxlength="100"><br>
+        <label for="price">Цена:</label><br>
+        <input class="one" type="number" step="0.01" id="price" name="price" max="999999.99"><br>
+        <label for="description">Описание:</label><br>
+        <input class="one" type="text" id="description" name="description" maxlength="100"><br>
+        <input type="submit" value="Добавить">
     </form>
     </div>
 

@@ -485,7 +485,11 @@ def four(request):
 @login_required
 @group_required('barista')
 def five(request):
-    return render(request, '5.html')
+    desert = Deserts.objects.filter(active=True)
+    context = {
+        "deserts_list": desert
+    }
+    return render(request, '5.html', context)
 
 @login_required
 @group_required('barista')

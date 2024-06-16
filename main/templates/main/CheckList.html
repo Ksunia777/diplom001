@@ -36,13 +36,10 @@
      </div>
         <form action="/addTask" method="post">
         {% csrf_token %}
-         <label for="description">Description:</label><br>
-         <input type="text" id="description" name="description" maxlength="100"><br>
-         <input type="submit" value="Submit">
+         <label for="description">Описание задания:</label><br>
+         <input class="one" type="text" id="description" name="description" maxlength="100"><br>
+         <input class="kn2" type="submit" value="Добавить">
         </form>
-      <div>
-         <a href="#">Добавить Задания</a>
-      </div>
     </div>
 
 
