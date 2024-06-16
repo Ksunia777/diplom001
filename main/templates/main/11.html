@@ -1,10 +1,11 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="UTF-8">
-	<title>Перевод</title>
-	<link rel="stylesheet" type="text/css" href="{% static 'main/css/Design3.css' %}">
+    <meta charset="UTF-8">
+    <title>Перевод</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/Design3.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'main/css/header.css' %}">
     <script src="{% static 'main/js/bell.js' %}"></script>
     <div class="header-icons">
@@ -13,21 +14,36 @@
         <div class="icon-circle" onclick="toggleDropdown()">A</div>
     </div>
 </head>
+
 <body>
-    <div class="Zag1"> <img  src="{% static 'img/logo.png' %}"  width="226" height="44"></div>
+    <div class="Zag1"> <img src="{% static 'img/logo.png' %}" width="226" height="44"></div>
     <div class="block2">
-     <p><b>Оплата переводом</b></p>
-     <p>Для продолжения операций переведите сумму на номер +79999999999</p>
-     <div>
-         <input type="button" class="kn2" value="Оплатить">
-     </div> 
+        <p><b>Оплата переводом</b></p>
+        <p></p>
+        <div>
+            <input type="button" class="kn2" value="Оплатить">
+        </div>
     </div>
     <div class="lol">
-       <input class="inp" type='text' placeholder="Клиент"  name='first_name'>
-     <div>
-         <input type="button" class="kn2" value="Оплатить">
-     </div> 
-     <a href="{% url 'custom_logout' %}">Выход</a>
+        <input class="inp" type='text' placeholder="Клиент" name='first_name'>
+        <div>
+            <input type="button" class="kn2" value="Оплатить">
+        </div>
+        <a href="{% url 'custom_logout' %}">Выход</a>
     </div>
+
+    <script>
+        var cookieName = 'total';
+        var cookie = document.cookie.split(';').find(function (el) {
+            return el.trim().startsWith(cookieName + '=');
+        });
+        if (cookie) {
+            var cookieValue = decodeURIComponent(cookie.split('=')[1]);
+            var totalParagraph = document.querySelector('p');
+            totalParagraph.textContent = 'Для продолжения операций переведите сумму ' + cookieValue + ' руб. на номер +79999999999';
+        }
+
+    </script>
 </body>
+
 </html>

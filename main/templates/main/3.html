@@ -25,13 +25,21 @@
     <div class="lol">
        <input class="inp" type='text' placeholder="Клиент"  name='first_name'>
 
-       <div id="check" class="check"></div>
-     <div>
+       <div id="check" class="check">
+
+        <input id="total" value="0">
+       </div>
          <input type="button" class="kn2" value="Оплатить">
-     </div> 
      <a href="{% url 'custom_logout' %}">Выход</a>
     </div>
     <script>
+        // var expires = new Date();
+        // expires.setTime(expires.getTime() + (30*24*60*60*1000)); // куки будут жить 30 дней
+        // var cookieValue = 'total=' + totalInput.value + ';expires=' + expires.toUTCString() + ';path=/';
+        // document.cookie = cookieValue;
+
+
+
         document.querySelectorAll('#square').forEach(function(square) {
           square.addEventListener('click', function() {
             var drinkName = this.getElementsByTagName('p')[0].innerText.split('\n')[0];
@@ -39,7 +47,42 @@
             var checkDiv = document.createElement('div');
             checkDiv.textContent = drinkName + ' - ' + drinkPrice.toFixed(2) + ' руб.';
             document.getElementById('check').appendChild(checkDiv);
+
+
+        var totalInput = document.getElementById('total');
+        var currentTotal = parseFloat(totalInput.value);
+        totalInput.value = (currentTotal + drinkPrice).toFixed(2);
+
+        var cookieValue = 'total=' + totalInput.value + ';path=/';
+        document.cookie = cookieValue;
+
+        console.log(document.cookie);
+
+
+        var cookieName = 'total';
+        var cookie = document.cookie.split(';').find(function(el) {
+        return el.trim().startsWith(cookieName + '=');
+        });
+        if (cookie) {
+            var cookieValue = decodeURIComponent(cookie.split('=')[1]);
+            console.log(cookieValue);
+        }
+
+//         var cookieName = 'total';
+//         var cookie = document.cookie.split(';').find(function(el) {
+//         return el.trim().startsWith(cookieName + '=');
+//         });
+//         if (cookie) {
+//         var totalInput = document.getElementById('total');
+//         totalInput.value = decodeURIComponent(cookie.split('=')[1]);
+// }
           });
+        });
+
+
+        document.querySelector('.kn2').addEventListener('click', function() {
+            var url = '/el'; // замените на нужный URL
+            window.location.href = url;
         });
       </script>
 </body>
